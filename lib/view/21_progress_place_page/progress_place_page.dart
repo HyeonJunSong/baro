@@ -7,17 +7,6 @@ class ProgressPlacePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: Stack(
-        alignment: Alignment.center,
-        children: [
-          WidgetMap(),
-          // WidgetSearchBar(),
-          // WidgetMenuButton(),
-          // Drawer(),
-        ],
-      ),
-    );
+    return const WidgetMap();
   }
 }
