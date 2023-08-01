@@ -14,11 +14,4 @@ class SurfSpot {
     required this.wind,
     required this.coor,
   });
-
-  SurfSpot.nullInit() :
-    name = '',
-    surf = '',
-    tide = '',
-    wind = '',
-    coor = LatLng(0, 0);
 }
