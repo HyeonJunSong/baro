@@ -1,4 +1,4 @@
-import 'package:baro/model/surf_spots.dart';
+import 'package:baro/model/surf_spot.dart';
 import 'package:baro/services/get_BitmapDescriptor_from_asset.dart';
 import 'package:baro/view/21_progress_place_page/dialog_surfSpot.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +12,6 @@ class ProgressPageViewController extends GetxController {
   Rx<TabController?> tabBarController = Rx<TabController?>(null);
   void initTabController(TabController tabController) {
     tabBarController(tabController);
-    print("it is init!");
   }
 
   RxInt progressPageIndex = 0.obs;
@@ -29,10 +28,10 @@ class ProgressPageViewController extends GetxController {
 
   //////////////////////////////////////////////////////////////////////////////Place Select Page
 
-  late GoogleMapController mapController;
-  void onMapCreated(GoogleMapController controller) {
-    mapController = controller;
-    updateMarkersBySurfSpots(surfSpots);
+  late GoogleMapController MapController_placePage;
+  void onMapCreated_placePage(GoogleMapController controller) {
+    MapController_placePage = controller;
+    updateMarkers_placePage_BySurfSpots(surfSpots);
   }
 
   List<SurfSpot> surfSpots = [
@@ -66,15 +65,15 @@ class ProgressPageViewController extends GetxController {
     )
   ];
 
-  List<Marker> markers = [];
+  RxList<Marker> markers_placePage = <Marker>[].obs;
   void updateMarkersByMarker(List<Marker> newMarkers) {
-    markers = newMarkers;
+    markers_placePage(newMarkers);
   }
-  Future<void> updateMarkersBySurfSpots(List<SurfSpot> surfSpots) async {
+  Future<void> updateMarkers_placePage_BySurfSpots(List<SurfSpot> surfSpots) async {
 
-    markers = [];
+    List<Marker> newMarkers = [];
     surfSpots.forEach((surfSpot) async {
-      markers.add(
+      newMarkers.add(
         Marker(
           markerId: MarkerId(surfSpot.name),
           position: surfSpot.coor,
@@ -90,7 +89,15 @@ class ProgressPageViewController extends GetxController {
         ),
       );
     });
-    updateMarkersByMarker(markers);
+    updateMarkersByMarker(newMarkers);
+  }
+
+  //////////////////////////////////////////////////////////////////////////////Date Select Page
+
+  //////////////////////////////////////////////////////////////////////////////Board Select Page
+  late GoogleMapController MapController_boardPage;
+  void onMapCreated_boardPage(GoogleMapController controller) {
+    MapController_boardPage = controller;
   }
 
   //////////////////////////////////////////////////////////////////////////////Results

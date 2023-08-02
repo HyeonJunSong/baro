@@ -1,3 +1,4 @@
+import 'package:baro/constants/colors.dart';
 import 'package:baro/view/20_progress_body/progress_page.dart';
 import 'package:baro/viewController/progress_page_view_controller.dart';
 import 'package:flutter/material.dart';

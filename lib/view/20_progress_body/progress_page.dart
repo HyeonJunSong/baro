@@ -1,5 +1,7 @@
 import 'package:baro/view/20_progress_body/widget_progress_stepper.dart';
 import 'package:baro/view/21_progress_place_page/progress_place_page.dart';
+import 'package:baro/view/22_progress_date_page/progress_date_page.dart';
+import 'package:baro/view/23_progress_board_page/progress_board_page.dart';
 import 'package:baro/viewController/progress_page_view_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -33,6 +35,7 @@ class _ProgressPageState extends State<ProgressPage> with SingleTickerProviderSt
       appBar: AppBar(
         flexibleSpace: ProgressStepper(),
       ),
+      resizeToAvoidBottomInset: false,
       body: Stack(
         alignment: Alignment.center,
         children: [
@@ -42,12 +45,8 @@ class _ProgressPageState extends State<ProgressPage> with SingleTickerProviderSt
               physics: const NeverScrollableScrollPhysics(),
               children: [
                 ProgressPlacePage(),
-                Container(
-                  child: Center(
-                    child: Text('2'),
-                  ),
-                ),
-                Container(),
+                ProgressDatePage(),
+                ProgressBoardPage(),
                 Container(),
                 Container(),
               ],
