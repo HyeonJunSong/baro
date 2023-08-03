@@ -8,14 +8,19 @@ class WidgetMap extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() => GoogleMap(
-      onMapCreated: Get.find<ProgressPageViewController>().onMapCreated_placePage,
-      initialCameraPosition: const CameraPosition(
-        target: LatLng(36.951885, -122.026127),
-        zoom: 17,
-      ),
-      zoomControlsEnabled: false,
-      markers: Set<Marker>.of(Get.find<ProgressPageViewController>().markers_placePage),
-    ));
+    return FutureBuilder(
+      future: Future.delayed(const Duration(seconds: 1)),
+      builder: (context, snapshot) {
+        return Obx(() => GoogleMap(
+          onMapCreated: Get.find<ProgressPageViewController>().onMapCreated_placePage,
+          initialCameraPosition: const CameraPosition(
+            target: LatLng(36.951885, -122.026127),
+            zoom: 17,
+          ),
+          zoomControlsEnabled: false,
+          markers: Set<Marker>.of(Get.find<ProgressPageViewController>().markers_placePage.value),
+        ));
+      }
+    );
   }
 }

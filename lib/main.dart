@@ -1,5 +1,6 @@
 import 'package:baro/constants/colors.dart';
 import 'package:baro/view/20_progress_body/progress_page.dart';
+import 'package:baro/view/26_progress_result_page/progress_result_page.dart';
 import 'package:baro/viewController/progress_page_view_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
         return GetMaterialApp(
           title: "Baro",
           debugShowCheckedModeBanner: false,
-          initialRoute: '/Progress',
+          initialRoute: '/',
           initialBinding: BindingsBuilder(() {
             // Bindings
           }),
@@ -40,6 +41,11 @@ class MyApp extends StatelessWidget {
                 Get.put(ProgressPageViewController());
               }),
             ),
+            GetPage(
+              name: "/Progress/Result",
+              page: () => const ProgressResultPage()
+            ),
+
           ],
 
           theme: ThemeData(

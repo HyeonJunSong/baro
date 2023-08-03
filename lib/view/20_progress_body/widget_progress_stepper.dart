@@ -32,17 +32,17 @@ class ProgressStepper extends StatelessWidget {
           isActive: Get.find<ProgressPageViewController>().progressPageIndex.value > 1 ? true : false,
         ),
         Step(
-          title: Get.find<ProgressPageViewController>().progressPageIndex.value == 2 ? Text("hello") : Text(""),
+          title: Get.find<ProgressPageViewController>().progressPageIndex.value == 2 ? Text("surf board") : Text(""),
           content: Container(),
           isActive: Get.find<ProgressPageViewController>().progressPageIndex.value > 2 ? true : false,
         ),
         Step(
-          title: Get.find<ProgressPageViewController>().progressPageIndex.value == 3 ? Text("hello") : Text(""),
+          title: Get.find<ProgressPageViewController>().progressPageIndex.value == 3 ? Text("educator") : Text(""),
           content: Container(),
           isActive: Get.find<ProgressPageViewController>().progressPageIndex.value > 3 ? true : false,
         ),
         Step(
-          title: Get.find<ProgressPageViewController>().progressPageIndex.value == 4 ? Text("hello") : Text(""),
+          title: Get.find<ProgressPageViewController>().progressPageIndex.value == 4 ? Text("payments") : Text(""),
           content: Container(),
           isActive: Get.find<ProgressPageViewController>().progressPageIndex.value > 4 ? true : false,
         ),

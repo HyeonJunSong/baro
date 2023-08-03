@@ -4,12 +4,14 @@ import 'package:baro/viewController/progress_page_view_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 GestureDetector componentEducatorList({required Educator educator}){
   return GestureDetector(
     onTap: (){
       Get.find<ProgressPageViewController>().setSelectedEducator(educator);
       Get.find<ProgressPageViewController>().toggleIfEducatorSelected();
+      Get.find<ProgressPageViewController>().MapController_educatorPage.animateCamera(CameraUpdate.newLatLng(educator.coor));
     },
     child: Container(
       height: 260.h,

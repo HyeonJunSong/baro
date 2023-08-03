@@ -1,6 +1,7 @@
 import 'package:baro/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -64,7 +65,7 @@ class HomePage extends StatelessWidget {
   Widget _startButton() {
     return ElevatedButton(
       onPressed: () {
-        // Get.toNamed("/select_place");
+        Get.toNamed("/Progress");
       },
       style: ElevatedButton.styleFrom(
         shape: RoundedRectangleBorder(
