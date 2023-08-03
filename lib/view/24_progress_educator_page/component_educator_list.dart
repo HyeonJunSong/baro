@@ -1,14 +1,15 @@
+import 'package:baro/model/educator.dart';
 import 'package:baro/model/surf_board_spot.dart';
 import 'package:baro/viewController/progress_page_view_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-GestureDetector componentBoardList({required SurfBoardSpot surfBoardSpot}){
+GestureDetector componentEducatorList({required Educator educator}){
   return GestureDetector(
     onTap: (){
-      Get.find<ProgressPageViewController>().setSelectedSurfBoardSpot(surfBoardSpot);
-      Get.find<ProgressPageViewController>().toggleIfBoardSelected();
+      Get.find<ProgressPageViewController>().setSelectedEducator(educator);
+      Get.find<ProgressPageViewController>().toggleIfEducatorSelected();
     },
     child: Container(
       height: 260.h,
@@ -29,16 +30,16 @@ GestureDetector componentBoardList({required SurfBoardSpot surfBoardSpot}){
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children:[
-          _image(surfBoardSpot.surfBoard.image),
+          _image(educator.image),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              _title(surfBoardSpot.surfBoard.model),
-              _educatorBadge(surfBoardSpot.user.educator != null),
+              _title(educator.name),
+              // _educatorBadge(surfBoardSpot.user.educator != null),
             ],
           ),
-          _description(surfBoardSpot.surfBoard.description),
-          _price(surfBoardSpot.surfBoard.price),
+          _description(educator.description),
+          _price(educator.price),
         ]
       ),
     ),
@@ -46,16 +47,20 @@ GestureDetector componentBoardList({required SurfBoardSpot surfBoardSpot}){
 }
 
 _image(String image){
-  return Expanded(
-    child: Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20.r),
-      ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(20.r),
-        child: Image.network(image, fit: BoxFit.cover,),
+  return Container(
+    width: 146.w,
+    height: 146.w,
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(20.r),
+      image: DecorationImage(
+        image: NetworkImage(image),
+        fit: BoxFit.cover,
       ),
     ),
+    // child: ClipRRect(
+    //   borderRadius: BorderRadius.circular(20.r),
+    //   child: Image.network(image, fit: BoxFit.cover,),
+    // ),
   );
 }
 

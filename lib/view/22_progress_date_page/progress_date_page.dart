@@ -1,4 +1,7 @@
+import 'package:baro/constants/colors.dart';
+import 'package:baro/viewController/progress_page_view_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 class ProgressDatePage extends StatelessWidget {
@@ -20,14 +23,20 @@ _datePicker(){
     navigationDirection: DateRangePickerNavigationDirection.vertical,
     viewSpacing: 0,
     showActionButtons: true,
-    maxDate: DateTime.now(),
-    onSubmit: (Object? value) {
-      //null if not selected
-      print(value);
+    minDate: DateTime.now(),
+    onSubmit: (Object? object) {
+      if(object is PickerDateRange) {
+        Get.find<ProgressPageViewController>().setSelectedDate(object.startDate!, object.endDate!);
+        Get.find<ProgressPageViewController>().increaseProgressPageIndex();
+      }
+      else {
+        Get.snackbar("Error", "Please select a date");
+      }
     },
     onCancel: () {
-      print('cancel');
+      Get.find<ProgressPageViewController>().decreaseProgressPageIndex();
     },
+    todayHighlightColor: colorPrimary,
   );
 }
 

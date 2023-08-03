@@ -41,6 +41,10 @@ class MyApp extends StatelessWidget {
               }),
             ),
           ],
+
+          theme: ThemeData(
+            colorScheme: baroColorScheme,
+          ),
         );
       }
     );

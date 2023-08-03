@@ -9,6 +9,10 @@ class SurfBoard{
   String finSetup;
   String tailShape;
   String description;
+  String image;
+  int deposit;
+  int price;
+
 
   SurfBoard({
     required this.brand,
@@ -19,6 +23,9 @@ class SurfBoard{
     required this.finSetup,
     required this.tailShape,
     required this.description,
+    required this.image,
+    required this.deposit,
+    required this.price,
   });
 
 }
