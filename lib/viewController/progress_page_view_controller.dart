@@ -70,13 +70,14 @@ class ProgressPageViewController extends GetxController {
     )
   ];
 
-  RxList<Marker> markers_placePage = <Marker>[].obs;
-  void updateMarkersByMarker(List<Marker> newMarkers) {
+  RxSet<Marker> markers_placePage = <Marker>{}.obs;
+  void updateMarkersByMarker(Set<Marker> newMarkers) {
     markers_placePage(newMarkers);
+    markers_placePage.refresh();
   }
   Future<void> updateMarkers_placePage_BySurfSpots(List<SurfSpot> surfSpots) async {
 
-    List<Marker> newMarkers = [];
+    Set<Marker> newMarkers = {};
     surfSpots.forEach((surfSpot) async {
       newMarkers.add(
         Marker(
@@ -182,6 +183,11 @@ class ProgressPageViewController extends GetxController {
               path: "assets/images/surf_spot_icon.png",
               width: 125
           ),
+          onTap: () {
+            MapController_boardPage.animateCamera(CameraUpdate.newLatLng(surfBoardSpot.coor));
+            setSelectedSurfBoardSpot(surfBoardSpot);
+            toggleIfBoardSelected();
+          },
         ),
       );
     });
@@ -191,8 +197,8 @@ class ProgressPageViewController extends GetxController {
   //////////////////////////////////////////////////////////////////////////////Educator Select Page
   late GoogleMapController MapController_educatorPage;
   void onMapCreated_educatorPage(GoogleMapController controller) {
-    MapController_boardPage = controller;
-    updateMarkers_boardPage_BySurfBoardSpots(surfBoardSpots);
+    MapController_educatorPage = controller;
+    updateMarkers_educatorPage_ByEducator(educatorList);
   }
 
   PanelController panelController_educatorPage = PanelController();
@@ -280,10 +286,21 @@ Future<void> updateMarkers_educatorPage_ByEducator(List<Educator> educators) asy
               path: "assets/images/surf_spot_icon.png",
               width: 125
           ),
+          onTap: () {
+            MapController_educatorPage.animateCamera(CameraUpdate.newLatLng(educator.coor));
+            setSelectedEducator(educator);
+            toggleIfEducatorSelected();
+          }
         ),
       );
     });
     updateMarkersByMarker_educatorPage(newMarkers);
+  }
+
+  //////////////////////////////////////////////////////////////////////////////Payment Page
+  RxInt radioPaymentMethod = 0.obs;
+  void setRadioPaymentMethod(int value) {
+    radioPaymentMethod.value = value;
   }
 
   //////////////////////////////////////////////////////////////////////////////Results

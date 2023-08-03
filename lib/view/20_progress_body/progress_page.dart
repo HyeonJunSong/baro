@@ -4,6 +4,7 @@ import 'package:baro/view/22_progress_date_page/progress_date_page.dart';
 import 'package:baro/view/23_progress_board_page/progress_board_page.dart';
 import 'package:baro/view/24_progress_educator_page/progress_educator_page.dart';
 import 'package:baro/view/25_progress_payment_page/progress_payment_page.dart';
+import 'package:baro/view/26_progress_result_page/progress_result_page.dart';
 import 'package:baro/viewController/progress_page_view_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
