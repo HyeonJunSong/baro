@@ -42,6 +42,7 @@ dependencies:
   json_serializable: ^6.7.1
   sliding_up_panel: ^2.0.0+1
   syncfusion_flutter_datepicker: ^22.2.5
+  google_maps_flutter_web: ^0.5.3
 
 dev_dependencies:
   flutter_test:
